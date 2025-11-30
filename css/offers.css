@@ -3,7 +3,7 @@
 .offers-section {
   padding: 80px 20px;
   text-align: center;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
 }
 
 .offers-section h2 {
