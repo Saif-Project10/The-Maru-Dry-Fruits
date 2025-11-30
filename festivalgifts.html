@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIFTING</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/gifting.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  
+  <!--favicon  -->
+  <link rel="icon" type="image/x-icon" href="./images/ChatGPT Image Oct 25, 2025, 11_03_51 AM (1).png">
+  
+  <style>
+   
+  
+  </style>
+</head>
+
+<body class="gifting-page">
+
+  <div id="particle-background"></div>
+  <!-- Header with Logo & Dark Mode -->
+  <div id="header-placeholder"></div>
+  <!-- navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <div class="card">
+    <H1>FESTIVAL GIFTS BY [MARU DRY FRUITS]</H1>
+
+    <!-- ramdan Section -->
+    <div class="section">
+      <img src="./images/ramdan.jpg" alt="Custom Basket">
+      <div class="text-content">
+        <h2>Ramadan Gifts</h2>
+        <p>
+          Unleash your creativity and design the perfect personalized gift with our customizable basket option.
+          You're no longer limited to pre-made selections; instead, you become the curator, hand-picking every
+          item to match your recipient's tastes and the occasion. Start by selecting the size and style of your
+          basket or container, then dive into our extensive collection of gourmet treats, luxury spa products,
+          fine wines, unique gadgets, and thoughtful trinkets. Whether you're celebrating a birthday, expressing
+          thanks, or sending cheer, a custom basket ensures your gift is unique and truly meaningful. We'll
+          carefully assemble your chosen items and finish it with beautiful wrapping and a personalized note,
+          transforming your vision into a stunning, one-of-a-kind present that's guaranteed to impress.
+        </p>
+        <a href="cart.html" class="quick-shop">Quick Shop</a>
+      </div>
+    </div>
+    
+
+    <!-- eid-ul-fitr Section -->
+    <div class="section">
+      <img src="./images/eid-ul-fitr.jpg" alt="Custom Bowl">
+      <div class="text-content">
+        <h2>Eid-Ul-Fitr</h2>
+        <p>
+          Design your ultimate meal by taking full control with our Customize Bowl option. Forget fixed menus;
+          this is your chance to become the chef and create a dish perfectly suited to your dietary needs and cravings.
+          Start by selecting your base — fluffy rice, crisp greens, or hearty noodles. Next, choose your protein:
+          grilled chicken,
+          savory tofu, or lean steak. Move on to your favorite mix-ins, adding flavor and texture with vibrant
+          vegetables,
+          fresh herbs, or crunchy toppings. Finally, crown your creation with one of our signature sauces or dressings.
+          Every ingredient is fresh, high-quality, and hand-selected by you, resulting in a unique and satisfying bowl
+          that is
+          truly yours. This personalized approach ensures your meal is exactly what you want — an explosion of flavors
+          tailor-made
+          for your palate.
+        </p>
+        <a href="cart.html" class="quick-shop">Quick Shop</a>
+      </div>
+    </div>
+
+    <!-- eid-ul-adha Section -->
+    <div class="section">
+      <img src="images/eid adha.jpg" alt="Custom Box">
+      <div class="text-content">
+        <h2>Eid-Ul-Adha</h2>
+        <p>
+          Take control and design the ultimate presentation with our Customize Box option, turning a simple gesture into
+          a deeply personal statement. You get to be the designer, hand-selecting every element to craft a gift that
+          perfectly
+          reflects your recipient's style and the occasion. Begin by choosing the size and material of your box, then
+          explore
+          our curated collection of luxury items — from artisanal chocolates and fine skincare to unique home goods and
+          sophisticated accessories. A custom box is the ideal way to celebrate birthdays, milestones, or simply show
+          appreciation,
+          because it ensures your gift is both thoughtful and precisely tailored. We'll meticulously arrange your
+          selections, adding
+          elegant filler, a satin ribbon, and a handwritten message to create a stunning, cohesive presentation. The
+          result is a
+          bespoke, unforgettable gift that shows you put care into every single detail.
+        </p>
+       <a href="cart.html" class="quick-shop">Quick Shop</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Festival Gifts Popup -->
+  <div class="popup-overlay" id="popupOverlay" style="display:none;">
+    <div class="popup">
+      <span class="close" id="closePopup">&times;</span>
+      <div class="popup-image">
+        <img src="" alt="Product Image" id="popupImg">
+      </div>
+      <div class="popup-details">
+        <h2 id="popupName">Product Name</h2>
+        <p id="popupDesc">Product description</p>
+
+        <div class="popup-top">
+          <div class="popup-size-selector">
+            <select id="popupSize">
+              <option value="250g">250g</option>
+              <option value="500g">500g</option>
+              <option value="1kg" selected>1kg</option>
+            </select>
+          </div>
+          <div class="popup-price-section">
+            <span id="popupCutPrice" class="old-price">Rs. 1200</span>
+            <span id="popupPrice" class="current-price">Rs. 999</span>
+          </div>
+        </div>
+
+        <div class="popup-quantity-control">
+          <button class="minus">-</button>
+          <input type="number" id="popupQty" value="1" min="1">
+          <button class="plus">+</button>
+        </div>
+
+        <div class="popup-actions">
+          <button id="addToCartBtn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add to Cart Modal -->
+  <div class="cart-modal-overlay" id="cartModalOverlay">
+    <div class="cart-modal">
+      <span class="close-cart-modal" id="closeCartModal">&times;</span>
+      <div class="cart-modal-icon">✓</div>
+      <h3>Item Added to Cart!</h3>
+      <p id="cartModalMessage">Your item has been successfully added to your shopping cart.</p>
+      <div class="cart-modal-actions">
+        <button class="continue-shopping" id="continueShopping">Continue Shopping</button>
+        <button class="view-cart" id="viewCart">View Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ✅ Popup elements (use existing HTML)
+      const popup = document.getElementById('popupOverlay');
+      const closeBtn = document.getElementById('closePopup');
+      const popupImg = document.getElementById('popupImg');
+      const popupTitle = document.getElementById('popupName');
+      const popupDesc = document.getElementById('popupDesc');
+      const quantityInput = document.getElementById('popupQty');
+      const plusBtn = popup.querySelector('.plus');
+      const minusBtn = popup.querySelector('.minus');
+      const weightSelect = document.getElementById('popupSize');
+      const addToCartBtn = document.getElementById('addToCartBtn');
+      const priceEl = document.getElementById('popupPrice');
+      const cutPriceEl = document.getElementById('popupCutPrice');
+      
+      // ✅ Cart Modal elements
+      const cartModal = document.getElementById('cartModalOverlay');
+      const closeCartModalBtn = document.getElementById('closeCartModal');
+      const continueShoppingBtn = document.getElementById('continueShopping');
+      const viewCartBtn = document.getElementById('viewCart');
+      const cartModalMessage = document.getElementById('cartModalMessage');
+
+      // Product price data
+      const productPrices = {
+        "Ramadan Gifts": { price: 2500, cut: 3000 },
+        "Eid-Ul-Fitr": { price: 3000, cut: 3500 },
+        "Eid-Ul-Adha": { price: 3500, cut: 4000 }
+      };
+
+      let currentProduct = "";
+
+      function updatePrice() {
+        const quantity = parseInt(quantityInput.value);
+        const weight = weightSelect.value;
+        let factor = 1;
+        if (weight === "250g") factor = 0.25;
+        else if (weight === "500g") factor = 0.5;
+
+        const basePrice = productPrices[currentProduct].price * factor * quantity;
+        const baseCut = productPrices[currentProduct].cut * factor * quantity;
+
+        priceEl.textContent = "Rs" + basePrice.toFixed(0);
+        cutPriceEl.textContent = "Rs" + baseCut.toFixed(0);
+      }
+
+      // Open popup on Quick Shop click
+      const shopButtons = document.querySelectorAll('.quick-shop');
+      shopButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = btn.closest('.section');
+          const imgSrc = section.querySelector('img').getAttribute('src');
+          const title = section.querySelector('h2').textContent;
+          const desc = section.querySelector('p').textContent;
+
+          currentProduct = title;
+          popupImg.src = imgSrc;
+          popupTitle.textContent = title;
+          popupDesc.textContent = desc;
+          quantityInput.value = 1;
+          weightSelect.value = "1kg";
+          updatePrice();
+
+          popup.style.display = 'flex';
+        });
+      });
+
+      // Close popup
+      closeBtn.addEventListener('click', () => popup.style.display = 'none');
+      window.addEventListener('click', e => {
+        if (e.target === popup) popup.style.display = 'none';
+      });
+
+      // Quantity buttons
+      plusBtn.addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updatePrice();
+      });
+      minusBtn.addEventListener('click', () => {
+        if (parseInt(quantityInput.value) > 1) quantityInput.value = parseInt(quantityInput.value) - 1;
+        updatePrice();
+      });
+      quantityInput.addEventListener('input', () => {
+        if (parseInt(quantityInput.value) < 1) quantityInput.value = 1;
+        updatePrice();
+      });
+
+      // Weight change
+      weightSelect.addEventListener('change', updatePrice);
+
+      // Add to cart
+      addToCartBtn.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value);
+        const weight = weightSelect.value;
+        const productImg = popupImg.getAttribute('src');
+        const productName = currentProduct;
+        const price = parseInt(priceEl.textContent.replace("₹", ""));
+        const cutPrice = parseInt(cutPriceEl.textContent.replace("₹", ""));
+
+        const cartItem = {
+          name: productName,
+          image: productImg,
+          size: weight,
+          quantity: quantity,
+          price: price,
+          cutPrice: cutPrice
+        };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(cartItem);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Show cart modal instead of alert
+        cartModalMessage.textContent = `"${productName}" has been added to your cart!`;
+        popup.style.display = 'none';
+        cartModal.style.display = 'flex';
+      });
+
+      // Cart Modal functionality
+      closeCartModalBtn.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+      });
+      
+      continueShoppingBtn.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+      });
+      
+      viewCartBtn.addEventListener('click', () => {
+        window.location.href = 'cart.html';
+      });
+      
+      window.addEventListener('click', e => {
+        if (e.target === cartModal) cartModal.style.display = 'none';
+      });
+    });
+  </script>
+
+  <div id="footer-placeholder"></div>
+  <script src="./js/footer.js" defer></script>
+  <script src="./js/header.js"></script>
+  <!--  navbar linking -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./js/nav.js"></script>
+
+</body>
+
+</html>

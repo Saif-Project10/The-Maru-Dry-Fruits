@@ -1,0 +1,369 @@
+/* ===== NAVBAR STYLES (COMPLETELY REWRITTEN WITH PROPER HAMBURGER SPACING) ===== */
+
+:root {
+  --bg-color: #0b0b0b;
+  --text-color: #ffffff;
+  --accent: #ffd700;
+  --link-color: #ffeb9a;
+  --card-bg: #1a1a1a;
+  --card-border: rgba(255, 215, 0, 0.2);
+  --text-color-dark: #ffec9e; 
+  --text-color-soft: #aaa;
+}
+
+.light-mode {
+  --bg-color: #faf6e8;
+  --text-color: #2c2c2c;
+  --accent: #c28b2a;
+  --link-color: #a87400;
+  --card-bg: #f9f7f2;
+  --card-border: #d0c9b8;
+  --text-color-dark: #4b3e2a;
+  --text-color-soft: #6b5f4f;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: 'Cinzel Decorative', serif;
+  color: var(--text-color);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* ===== NAVBAR STYLES ===== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 40px;
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.5s ease;
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+/* ===== HAMBURGER MENU (WITH PROPER SPACING) ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 12px;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.hamburger:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2.5px;
+  background: var(--accent);
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+  display: block;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ===== NAV LINKS ===== */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding: 10px 8px;
+  display: block;
+  transition: 0.3s;
+  border-radius: 6px;
+}
+
+.nav-links li a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+/* ===== DROPDOWN STYLES ===== */
+.nav-links li.account .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  min-width: 140px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 8px 0;
+}
+
+.nav-links li.account:hover .dropdown {
+  display: block;
+}
+
+.nav-links li.account .dropdown a {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: var(--link-color);
+  border-radius: 0;
+}
+
+.nav-links li.account .dropdown a:hover {
+  background-color: rgba(255,215,0,0.1);
+  color: var(--accent);
+}
+
+/* ==================================
+   COMPLETE RESPONSIVE FIXES
+   ================================== */
+
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navbar {
+    padding: 12px 30px;
+    min-height: 55px;
+  }
+  
+  .nav-links {
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    font-size: 14px;
+    padding: 8px 6px;
+  }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+    padding: 12px 15px;
+    position: relative;
+    min-height: 50px;
+  }
+
+  /* Show Hamburger with proper spacing */
+  .hamburger {
+    display: flex;
+    left: 10px;
+    padding: 10px;
+  }
+
+  /* Navigation Links - Hidden by default */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--card-bg);
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--card-border);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  /* Show navigation when active */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links li a {
+    padding: 15px 20px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* Dropdown for mobile */
+  .nav-links li.account .dropdown {
+    position: static;
+    border: none;
+    box-shadow: none;
+    background-color: rgba(255, 215, 0, 0.05);
+    display: none;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li.account:hover .dropdown,
+  .nav-links li.account.active .dropdown {
+    display: block;
+  }
+
+  .nav-links li.account .dropdown a {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 14px;
+  }
+  
+  .nav-links li.account .dropdown a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 12px;
+    min-height: 48px;
+  }
+  
+  .hamburger {
+    left: 8px;
+    padding: 8px;
+  }
+  
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+  }
+  
+  .nav-links li a {
+    padding: 14px 15px;
+    font-size: 15px;
+  }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+  .navbar {
+    padding: 8px 10px;
+    min-height: 45px;
+  }
+  
+  .hamburger {
+    left: 6px;
+    padding: 6px;
+  }
+  
+  .hamburger span {
+    width: 20px;
+  }
+  
+  .nav-links li a {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Galaxy Z Fold 5 & Similar Foldable Devices */
+@media (max-width: 344px) and (max-height: 882px) {
+  .navbar {
+    padding: 10px 8px;
+    min-height: 50px;
+  }
+  
+  .hamburger {
+    left: 8px;
+    top: 50%;
+    padding: 8px;
+    transform: translateY(-50%);
+  }
+  
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+  }
+  
+  .nav-links li a {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Very Small Devices (320px and below) */
+@media (max-width: 320px) {
+  .navbar {
+    padding: 6px 8px;
+    min-height: 44px;
+  }
+  
+  .hamburger {
+    left: 5px;
+    padding: 5px;
+  }
+  
+  .hamburger span {
+    width: 18px;
+    height: 2px;
+  }
+  
+  .nav-links li a {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+}
+
+/* Desktop - Hide hamburger */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+  
+  .nav-links {
+    display: flex !important;
+  }
+}
+
+#navbar-placeholder, 
+#navbar-placeholder * {
+  font-family: 'Cinzel Decorative', serif !important;
+}

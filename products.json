@@ -1,0 +1,229 @@
+[
+    {
+        "id": "almonds-001",
+        "name": "Almonds",
+        "category": "Nuts",
+        "image": "./images/download (6).jpg",
+        "description": "Calories: 579, Protein: 21g, Fat: 50g, Fiber: 12g, Vitamin E: 25mg, Magnesium: 270mg",
+        "price": 3150,
+        "old_price": 3500,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "cashews-002",
+        "name": "Cashews",
+        "category": "Nuts",
+        "image": "./images/download.jpg",
+        "description": "Calories: 553, Protein: 18g, Fat: 44g, Iron: 6.7mg, Zinc: 5.8mg",
+        "price": 2850,
+        "old_price": 3200,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "walnut-003",
+        "name": "Walnut",
+        "category": "Nuts",
+        "image": "./images/download (1).jpg",
+        "description": "Calories: 654, Protein: 15g, Fat: 65g, Omega-3: 9g, Fiber: 7g",
+        "price": 4500,
+        "old_price": 5000,
+        "stock": "Low Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "pistachios-004",
+        "name": "Pistachios",
+        "category": "Nuts",
+        "image": "./images/download (2).jpg",
+        "description": "Calories: 562, Protein: 20g, Fat: 45g, Fiber: 10g, Potassium: 1025mg",
+        "price": 3800,
+        "old_price": 4200,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "raisins-005",
+        "name": "Raisins",
+        "category": "Dried Fruit",
+        "image": "./images/download (3).jpg",
+        "description": "Calories: 299, Carbohydrates: 79g, Fiber: 3.7g, Iron: 1.9mg, Potassium: 749mg",
+        "price": 1650,
+        "old_price": 1900,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "dates-006",
+        "name": "Dates",
+        "category": "Dried Fruit",
+        "image": "./images/download (4).jpg",
+        "description": "Calories: 282, Carbohydrates: 75g, Fiber: 8g, Potassium: 656mg, Magnesium: 54mg",
+        "price": 1900,
+        "old_price": 2200,
+        "stock": "In Stock",
+        "sizes": ["250g","500g", "1kg"]
+    },
+    {
+        "id": "figs-007",
+        "name": "Figs (dried)",
+        "category": "Dried Fruit",
+        "image": "./images/download (5).jpg",
+        "description": "Calories: 249, Carbohydrates: 64g, Fiber: 9.8g, Calcium: 162mg, Iron: 2mg",
+        "price": 2400,
+        "old_price": 2800,
+        "stock": "Low Stock",
+        "sizes": ["250g", "500g","1kg"]
+    },
+    {
+        "id": "apricots-008",
+        "name": "Apricots (dried)",
+        "category": "Dried Fruit",
+        "image": "./images/download (7).jpg",
+        "description": "Calories: 241, Carbohydrates: 63g, Fiber: 7g, Vitamin A: 3600µg, Iron: 2.7mg",
+        "price": 1700,
+        "old_price": 2000,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "prunes-009",
+        "name": "Prunes (Dried Plums)",
+        "category": "Dried Fruit",
+        "image": "./images/download (8).jpg",
+        "description": "Calories: 240, Carbohydrates: 64g, Fiber: 7g, Potassium: 732mg, Vitamin K: 60µg",
+        "price": 1550,
+        "old_price": 1800,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "hazelnuts-010",
+        "name": "Hazelnuts",
+        "category": "Nuts",
+        "image": "./images/download (9).jpg",
+        "description": "Calories: 628, Protein: 15g, Fat: 61g, Fiber: 10g, Vitamin E: 15mg",
+        "price": 3300,
+        "old_price": 3700,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "pine-nuts-011",
+        "name": "Pine Nuts",
+        "category": "Nuts",
+        "image": "./images/download (10).jpg",
+        "description": "Calories: 673, Protein: 14g, Fat: 68g, Magnesium: 251mg, Zinc: 6.5mg",
+        "price": 8000,
+        "old_price": 9500,
+        "stock": "Low Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "brazil-nuts-012",
+        "name": "Brazil Nuts",
+        "category": "Nuts",
+        "image": "./images/download (11).jpg",
+        "description": "Calories: 659, Protein: 14g, Fat: 67g, Selenium: 1917µg, Magnesium: 376mg",
+        "price": 3900,
+        "old_price": 4300,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "macadamia-nuts-013",
+        "name": "Macadamia Nuts",
+        "category": "Nuts",
+        "image": "./images/download (12).jpg",
+        "description": "Calories: 718, Protein: 8g, Fat: 76g, Fiber: 8.6g, Iron: 3.7mg",
+        "price": 5800,
+        "old_price": 6500,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "pecans-014",
+        "name": "Pecans",
+        "category": "Nuts",
+        "image": "./images/download (13).jpg",
+        "description": "Calories: 691, Protein: 9g, Fat: 72g, Fiber: 10g, Magnesium: 121mg",
+        "price": 4200,
+        "old_price": 4800,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "cranberries-015",
+        "name": "Cranberries (Dried)",
+        "category": "Dried Fruit",
+        "image": "./images/download (14).jpg",
+        "description": "Calories: 325, Carbohydrates: 82g, Fiber: 5g, Vitamin C: 1mg, Iron: 0.3mg",
+        "price": 2000,
+        "old_price": 2400,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "medjool-016",
+        "name": "Medjool Dates",
+        "category": "Dates",
+        "image": "./images/download (2).jfif",
+        "description": "277 kcal, 75g carbs, 66g sugar, 7g fiber, 1.8g protein, 0.2g fat, 696mg potassium",
+        "price": 2700,
+        "old_price": 3000,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "barhi-017",
+        "name": "Barhi Dates",
+        "category": "Dates",
+        "image": "./images/download (4).jfif",
+        "description": "314 kcal, 80g carbs, 65g sugar, 8g fiber, 2.5g protein, 0.4g fat, 650mg potassium",
+        "price": 2100,
+        "old_price": 2400,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "zahidi-018",
+        "name": "Zahidi Dates",
+        "category": "Dates",
+        "image": "./images/download.jfif",
+        "description": "276 kcal, 73g carbs, 65g sugar, 7g fiber, 2g protein, 0.3g fat, 680mg potassium",
+        "price": 1700,
+        "old_price": 2000,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    },
+    {
+        "id": "ajwa-019",
+        "name": "Ajwa Dates",
+        "category": "Dates",
+        "image": "./images/download (1).jfif",
+        "description": "277 kcal, 75g carbs, 66g sugar, 6.7g fiber, 1.8g protein, 0.2g fat, 656mg potassium",
+        "price": 2500,
+        "old_price": 3000,
+        "stock": "High Demand",
+        "sizes": ["250g", "500g", "1kg"]
+    },
+    {
+        "id": "deglet-noor-020",
+        "name": "Deglet Noor Dates",
+        "category": "Dates",
+        "image": "./images/download (3).jfif",
+        "description": "282 kcal, 75g carbs, 63g sugar, 8g fiber, 2g protein, 0.4g fat, 656mg potassium",
+        "price": 1800,
+        "old_price": 2100,
+        "stock": "In Stock",
+        "sizes": ["250g", "500g","1kg"]
+        
+    }
+]

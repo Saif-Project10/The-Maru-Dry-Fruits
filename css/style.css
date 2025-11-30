@@ -1,0 +1,1038 @@
+
+
+
+
+
+
+ /* --------------------------
+   Global Body & Fonts
+---------------------------- */
+body {
+    margin: 0;
+    line-height: 20px;
+    /* Font-family removed to avoid conflict with navbar */
+    /* Background-color removed, use CSS variables from navbar for dark/light mode */
+}
+/* style.css */
+
+/* style.css (ya alag hero.css file) */
+.hero-section {
+    height: 80vh; /* Screen ka 80% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('path/to/your/dryfruit_banner.jpg') no-repeat center center/cover; /* Zaroor ek acchi image lagaen */
+    position: relative;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+}
+
+.hero-section h1, .hero-section p, .cta-button {
+    z-index: 2; /* Overlay se oopar */
+    opacity: 0; /* Animation ke liye shuru mein hidden */
+    transform: translateY(20px);
+    animation: fadeInSlide 1s ease-out forwards;
+}
+
+.hero-section h1 { animation-delay: 0.2s; font-size: 3.5rem; color: var(--accent); }
+.hero-section p { animation-delay: 0.4s; font-size: 1.5rem; }
+.cta-button { 
+    animation-delay: 0.6s;
+    background: var(--accent);
+    color: var(--bg-color);
+    padding: 12px 25px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+.cta-button:hover { transform: scale(1.05); }
+
+@keyframes fadeInSlide {
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ADD THIS TO YOUR style.css */
+@media (max-width: 1024px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+        padding: 0 20px;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+}
+/* ==================================
+   FILTER & SEARCH BAR STYLING
+   ================================== */
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between; /* Buttons aur search ko kinaron par rakhta hai */
+    align-items: center;
+    padding: 20px 40px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Mobile par neeche aa jayega */
+    gap: 15px;
+    background-color: var(--card-bg, #f9f7f2);
+    border-bottom: 1px solid var(--card-border, #d0c9b8);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--accent);
+    background-color: transparent;
+    color: var(--accent);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: var(--accent-light, #c0e08f); /* Thoda halka color */
+    color: var(--bg-color, #fff); /* Text color white */
+}
+
+/* Active Button ka style */
+.filter-btn.active {
+    background-color: var(--accent);
+    color: var(--bg-color, #fff);
+    border-color: var(--accent);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Bar Styling */
+.search-bar input[type="text"] {
+    padding: 10px 15px;
+    width: 250px;
+    border: 1px solid var(--card-border, #d0c9b8);
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 5px rgba(137, 168, 74, 0.5); /* Accent color ka shadow */
+}
+
+@media (max-width: 600px) {
+    .filter-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .filter-buttons {
+        width: 100%;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+    .search-bar input[type="text"] {
+        width: 100%;
+    }
+}
+/* ADD THIS TO YOUR style.css */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .filter-controls {
+        padding: 15px 30px;
+    }
+    
+    .search-bar input[type="text"] {
+        width: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .filter-controls {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .search-bar input[type="text"] {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+/* --------------------------
+   Card Section Layout
+---------------------------- */
+.card-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
+    padding: 10px;
+    gap: 30px;
+    margin: 10px;
+}
+
+/* --------------------------
+   Card Container (Updated for 3D Effect)
+---------------------------- */
+.card-container {
+    background-color: var(--card-bg, #f9f7f2); 
+    border: 2px solid var(--card-border, #d0c9b8);
+    color: var(--text-color, #2c2c2c); 
+    border-radius: 12px;
+    padding: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.4s, box-shadow 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    /* 💡 3D Effect ke liye ZAROORI CSS: */
+    /* Apne zaroori properties ko yahan set karna */
+    position: relative; 
+    transform-style: preserve-3d; /* Isse andar ke elements 3D space mein rahenge */
+    perspective: 1000px; /* Perspective set karna */
+    transition: transform 0.5s ease; /* Transition ko thoda smooth karna */
+}
+
+/* Scroll Animation classes baqi waisi hi rahengi */
+.card-container.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-container:hover {
+    /* ❌ Purana Code: transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); */
+    /* ✅ Naya 3D Rotation aur Shadow */
+    transform: rotateX(5deg) rotateY(5deg) scale(1.03); /* Thoda sa tedha (rotation) aur thoda sa bada */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3); /* Shade ko zyada gehra karna */
+}
+/* --------------------------
+   Individual Card
+---------------------------- */
+/* --------------------------
+   Individual Card (FIXED FOR ALIGNMENT)
+---------------------------- */
+.card {
+    /* ✅ SAHIH: Isse image, h4, p, aur price-info, sab card ke andar center ho jayenge */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%; /* Poori width lo */
+    font-size: 16px;
+}
+
+/* --------------------------
+   Images in Cards
+---------------------------- */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.card h4 {
+    color: var(--text-color-dark, #4b3e2a); /* Dark/Light mode mein yeh color adjust hoga */
+    margin: 5px 0;
+    font-size: 18px;
+    text-align: center;
+   
+}
+.card p {
+    color: var(--text-color-soft, #6b5f4f);
+    font-size: 14px;
+    text-align: center;
+    
+}
+
+/* --------------------------
+   Buttons (Card Buttons only)
+---------------------------- */
+.card-container button {
+    display: block;
+    width: 80%;
+    margin-top: auto;      /* pushes button to bottom */
+    margin-bottom: 15px;   /* distance from bottom of card */
+    background-color: #89a84a;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+
+
+
+
+.card-container button:hover {
+    background-color: #759c28;
+    transform: scale(1.05);
+}
+/* ==================================
+   DYNAMIC CARDS: PRICE STYLING
+   ================================== */
+
+/* Price block ki styling aur alignment */
+.price-info {
+    /* Current aur Old price ko ek line mein laane aur center karne ke liye */
+    display: flex;
+    justify-content: center; /* Center alignment */
+    align-items: baseline; /* Prices ko base line mein rakhega */
+    gap: 10px; /* Do prices ke beech ka fasla */
+    margin-top: 5px; 
+    margin-bottom: 10px;
+}
+
+/* Current price ka style */
+.current-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent); /* Accent color se highlight */
+}
+
+/* Old (Cut) Price ka style */
+.old-price {
+    font-size: 0.9rem;
+    color: #a0988e; /* Halka color */
+    text-decoration: line-through; /* ✂️ Yeh woh line hai jo cut price par aayegi */
+    opacity: 0.7;
+}
+/* --------------------------
+   Optional Responsive Tweaks
+---------------------------- */
+@media (max-width: 1024px) {
+    .card-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .card-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+/* ADD THIS TO YOUR style.css */
+@media (max-width: 1024px) {
+    .card h4 {
+        font-size: 16px;
+    }
+    .card p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-section {
+        padding: 5px;
+        gap: 15px;
+        margin: 5px;
+    }
+    
+    .card-container {
+        padding: 12px;
+    }
+    
+    .card img {
+        height: 180px;
+    }
+    
+    .card h4 {
+        font-size: 15px;
+    }
+    
+    .card p {
+        font-size: 12px;
+    }
+    
+    .current-price {
+        font-size: 1.1rem;
+    }
+    
+    .old-price {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-section {
+        gap: 12px;
+    }
+    
+    .card-container {
+        padding: 10px;
+    }
+    
+    .card img {
+        height: 160px;
+    }
+    
+    .card-container button {
+        width: 90%;
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+/* Position the particle layer */
+#particle-background {
+    position: fixed; /* Fixed hi rehne dein */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Peeche hi rehne dein */
+    pointer-events: none;
+}
+
+/* style.css - Is block ko dhoond kar replace karein */
+
+#particle-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 💡 Yahan change karein: Opacity 0.05 se 0.15, aur size 20px se 10px */
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 2px, transparent 2px); /* Golden color use kiya */
+    background-size: 10px 10px; /* Particles zyada kareeb aayenge */
+    
+    /* Animation: Background ko slowly move karna */
+    animation: moveBackground 60s linear infinite;
+    
+    /* NEW: Ek halka blur effect dein, taake woh background se blend ho jayen */
+    filter: blur(0.5px); 
+}
+
+/* Light Mode ke liye bhi set karein */
+.light-mode #particle-background::before {
+    /* background: radial-gradient(circle, rgba(194, 139, 42, 0.25) 2px, transparent 2px); Brownish Golden color */
+        background: radial-gradient(circle, rgba(194, 138, 42, 0.986) 2px, transparent 2px);
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+/* ADD THIS TO YOUR style.css */
+@media (max-width: 768px) {
+    #particle-background::before {
+        background-size: 8px 8px; /* Smaller particles for mobile */
+        animation: moveBackground 120s linear infinite; /* Slower animation */
+    }
+}
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 80px; /* Footer se upar */
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e); /* Gold Gradient */
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.back-to-top.show {
+    display: flex;
+}
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, #ffed4e, #ffd700);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Light Mode */
+.light-mode .back-to-top {
+    background: linear-gradient(135deg, #c28b2a, #e6b450); /* Brown-Gold Gradient */
+    box-shadow: 0 4px 15px rgba(194, 139, 42, 0.3);
+}
+
+.light-mode .back-to-top:hover {
+    background: linear-gradient(135deg, #e6b450, #c28b2a);
+    box-shadow: 0 6px 20px rgba(194, 139, 42, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 70px; /* Mobile par thoda upar */
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+/* ==================================
+   COMPLETE RESPONSIVE MEDIA QUERIES
+   ================================== */
+
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+    
+    .card h4 {
+        font-size: 16px;
+    }
+    .card p {
+        font-size: 13px;
+    }
+    
+    .filter-controls {
+        padding: 15px 30px;
+    }
+    
+    .search-bar input[type="text"] {
+        width: 200px;
+    }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+        padding: 0 20px;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .card-section {
+        padding: 5px;
+        gap: 15px;
+        margin: 5px;
+    }
+    
+    .card-container {
+        padding: 12px;
+    }
+    
+    .card img {
+        height: 180px;
+    }
+    
+    .card h4 {
+        font-size: 15px;
+    }
+    
+    .card p {
+        font-size: 12px;
+    }
+    
+    .current-price {
+        font-size: 1.1rem;
+    }
+    
+    .old-price {
+        font-size: 0.8rem;
+    }
+    
+    .back-to-top {
+        bottom: 70px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+    
+    #particle-background::before {
+        background-size: 8px 8px;
+        animation: moveBackground 120s linear infinite;
+    }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+    
+    .card-section {
+        gap: 12px;
+    }
+    
+    .card-container {
+        padding: 10px;
+    }
+    
+    .card img {
+        height: 160px;
+    }
+    
+    .card-container button {
+        width: 90%;
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .filter-controls {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .search-bar input[type="text"] {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+    .hero-section h1 {
+        font-size: 1.4rem;
+    }
+    .hero-section p {
+        font-size: 0.8rem;
+    }
+    
+    .card-section {
+        gap: 10px;
+        margin: 5px 0;
+    }
+    
+    .card-container {
+        padding: 8px;
+    }
+    
+    .card img {
+        height: 140px;
+    }
+}
+
+/* TO make responsive new CSS added */
+
+/* ===== HERO SECTION RESPONSIVE FIXES ===== */
+.hero-section {
+    height: 80vh;
+    padding: 0 20px;
+}
+
+/* Tablet Fix */
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 70vh;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+        padding: 0 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+    }
+    
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Small Mobile Fix */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 50vh;
+        padding: 0 10px;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile Fix */
+@media (max-width: 360px) {
+    .hero-section {
+        height: 45vh;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section p {
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
+
+/* ===== CARD GRID RESPONSIVE FIXES ===== */
+.card-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* Tablet Optimization */
+@media (max-width: 1024px) {
+    .card-section {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 15px;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .card-section {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        padding: 10px;
+        margin: 5px;
+    }
+    
+    .card-container {
+        padding: 12px;
+    }
+    
+    .card img {
+        height: 180px;
+    }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+    .card-section {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .card-container {
+        padding: 10px;
+    }
+    
+    .card img {
+        height: 160px;
+    }
+    
+    .card h4 {
+        font-size: 16px;
+    }
+    
+    .card p {
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile Optimization */
+@media (max-width: 360px) {
+    .card-section {
+        gap: 10px;
+        padding: 5px;
+    }
+    
+    .card-container {
+        padding: 8px;
+    }
+    
+    .card img {
+        height: 140px;
+    }
+    
+    .card h4 {
+        font-size: 15px;
+    }
+    
+    .card p {
+        font-size: 13px;
+    }
+    
+    .card-container button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+/* ===== FILTER CONTROLS RESPONSIVE FIXES ===== */
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--card-border);
+}
+
+/* Tablet Fix */
+@media (max-width: 1024px) {
+    .filter-controls {
+        padding: 15px 20px;
+    }
+    
+    .search-bar input[type="text"] {
+        width: 200px;
+    }
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .search-bar input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Small Mobile Fix */
+@media (max-width: 480px) {
+    .filter-controls {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .search-bar input[type="text"] {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile Fix */
+@media (max-width: 360px) {
+    .filter-controls {
+        padding: 8px 10px;
+    }
+    
+    .filter-buttons {
+        gap: 6px;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .search-bar input[type="text"] {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ===== PARTICLE BACKGROUND PERFORMANCE FIX ===== */
+#particle-background::before {
+    background-size: 15px 15px;
+    animation: moveBackground 120s linear infinite;
+}
+
+/* Mobile Performance Optimization */
+@media (max-width: 768px) {
+    #particle-background::before {
+        background-size: 12px 12px;
+        animation: moveBackground 180s linear infinite;
+        filter: blur(0.3px);
+    }
+}
+
+/* Small Mobile Performance Optimization */
+@media (max-width: 480px) {
+    #particle-background::before {
+        background-size: 10px 10px;
+        animation: moveBackground 240s linear infinite;
+        opacity: 0.7;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ===== GLOBAL MOBILE OPTIMIZATION ===== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh;
+}
+
+/* Touch device improvements */
+@media (max-width: 768px) {
+    button, 
+    .filter-btn, 
+    .cta-button, 
+    .card-container button {
+        min-height: 44px; /* Better touch targets */
+        min-width: 44px;
+    }
+    
+    input, 
+    select, 
+    textarea {
+        font-size: 16px; /* Prevent zoom on focus in iOS */
+    }
+}
+
+/* Very small device text optimization */
+@media (max-width: 360px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.2rem; }
+    h4 { font-size: 1.1rem; }
+}
+
+
+
+
+
+

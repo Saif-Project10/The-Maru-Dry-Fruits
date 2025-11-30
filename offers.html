@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Offers</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/header.css" />
+  <link rel="stylesheet" href="./css/offers.css" />
+  <link rel="stylesheet" href="./css/nav.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="icon" type="image/x-icon" href="./images/ChatGPT Image Oct 25, 2025, 11_03_51 AM (1).png" />
+</head>
+<body>
+  <div id="particle-background"></div>
+  <div id="header-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <!-- Offers Section -->
+  <section class="offers-section">
+    <h2>Special Offers & Discounts</h2>
+    <div class="offers-container">
+      <div class="offer-card visible">
+        <img src="./images/download (6).jpg" alt="Almonds Offer" />
+        <h3>30% Off on Almonds</h3>
+        <p>Grab premium quality almonds at a discounted price for a limited time.</p>
+        <button class="cta-button">Shop Now</button>
+      </div>
+
+      <div class="offer-card visible">
+        <img src="./images/mixdates.jpeg" alt="Dates Offer" />
+        <h3>Buy 1kg Mix-Dates, Get 100g Free</h3>
+        <p>Enjoy our delicious dates with a special free bonus offer.</p>
+        <button class="cta-button">Shop Now</button>
+      </div>
+
+      <div class="offer-card visible">
+        <img src="./images/download (1).jpg" alt="Walnuts Offer" />
+        <h3>25% Off on Walnuts</h3>
+        <p>Get crunchy, premium-quality walnuts at an amazing discount this week!</p>
+        <button class="cta-button">Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popup -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+      <span class="close" id="closePopup">&times;</span>
+
+      <div class="popup-image">
+        <img src="images/almonds.jpg" alt="Product Image" id="popupImg" />
+      </div>
+
+      <div class="popup-details">
+        <h2 id="popupName">Product Name</h2>
+        <p id="popupDesc">Product short description goes here.</p>
+
+        <div class="popup-top">
+          <div class="popup-size-selector">
+            <select id="popupSize">
+              <option value="250g">250g</option>
+              <option value="500g">500g</option>
+              <option value="1kg" selected>1kg</option>
+            </select>
+          </div>
+
+          <div class="popup-price-section">
+            <span id="popupCutPrice" class="old-price">Rs. 1200</span>
+            <span id="popupPrice" class="current-price">Rs. 999</span>
+          </div>
+        </div>
+
+        <div class="popup-quantity-control">
+          <button class="minus">-</button>
+          <input type="number" id="popupQty" value="1" min="1" />
+          <button class="plus">+</button>
+        </div>
+
+        <div class="popup-actions">
+          <button id="addToCartBtn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal-overlay" id="cartModalOverlay">
+    <div class="cart-modal">
+      <span class="close-cart-modal" id="closeCartModal">&times;</span>
+      <div class="cart-modal-icon">✓</div>
+      <h3>Item Added to Cart!</h3>
+      <p id="cartModalMessage">Your item has been successfully added to your shopping cart.</p>
+      <div class="cart-modal-actions">
+        <button class="continue-shopping" id="continueShopping">Continue Shopping</button>
+        <button class="view-cart" id="viewCart">View Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Animation -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const offerCards = document.querySelectorAll(".offer-card");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      offerCards.forEach((card) => observer.observe(card));
+    });
+  </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Elements
+  const popup = document.getElementById('popupOverlay');
+  const closeBtn = document.getElementById('closePopup');
+  const shopButtons = document.querySelectorAll('.cta-button');
+
+  const popupImg = document.getElementById('popupImg');
+  const popupTitle = document.getElementById('popupName');
+  const popupDesc = document.getElementById('popupDesc');
+  const quantityInput = document.getElementById('popupQty');
+  const plusBtn = document.querySelector('.plus');
+  const minusBtn = document.querySelector('.minus');
+  const weightSelect = document.getElementById('popupSize');
+  const addToCartBtn = document.getElementById('addToCartBtn');
+  const priceEl = document.getElementById('popupPrice');
+  const cutPriceEl = document.getElementById('popupCutPrice');
+
+  // Cart modal elements
+  const cartModal = document.getElementById('cartModalOverlay');
+  const closeCartModalBtn = document.getElementById('closeCartModal');
+  const continueShoppingBtn = document.getElementById('continueShopping');
+  const viewCartBtn = document.getElementById('viewCart');
+  const cartModalMessage = document.getElementById('cartModalMessage');
+
+  // Price data
+  const productPrices = {
+    "Almond": { price: 3150, cut: 3500 },
+    "Walnuts": { price: 4500, cut: 5000 },
+    "Mix-Dates": { price: 2500, cut: 3000 }
+  };
+
+  let currentProduct = "";
+
+  function updatePrice() {
+    try {
+      const quantity = Math.max(1, parseInt(quantityInput.value) || 1);
+      const weight = weightSelect.value;
+      let factor = 1;
+      if (weight === "250g") factor = 0.25;
+      else if (weight === "500g") factor = 0.5;
+
+      if (!productPrices[currentProduct]) {
+        priceEl.textContent = "Rs. --";
+        cutPriceEl.textContent = "Rs. --";
+        return;
+      }
+
+      const basePrice = productPrices[currentProduct].price * factor * quantity;
+      const baseCut = productPrices[currentProduct].cut * factor * quantity;
+
+      priceEl.textContent = "Rs" + Math.round(basePrice);
+      cutPriceEl.textContent = "Rs" + Math.round(baseCut);
+    } catch (err) {
+      console.warn('updatePrice error', err);
+    }
+  }
+
+  // Open popup
+  shopButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = btn.closest('.offer-card');
+      if (!card) return;
+
+      const imgSrc = card.querySelector('img')?.src || '';
+      const title = (card.querySelector('h3')?.textContent || '').trim();
+      const desc = (card.querySelector('p')?.textContent || '').trim();
+
+      const lowerTitle = title.toLowerCase();
+      if (lowerTitle.includes("almond")) currentProduct = "Almond";
+      else if (lowerTitle.includes("walnut")) currentProduct = "Walnuts";
+      else if (lowerTitle.includes("date")) currentProduct = "Mix-Dates";
+      else currentProduct = "Mix-Dates";
+
+      popupImg.src = imgSrc;
+      popupTitle.textContent = title;
+      popupDesc.textContent = desc;
+      quantityInput.value = 1;
+      weightSelect.value = "1kg";
+
+      updatePrice();
+
+      // ✅ FIX: Pehle display flex karein, phir animation
+      popup.style.display = "flex";
+      // ✅ Small delay for animation to work properly
+      setTimeout(() => {
+        popup.querySelector(".popup").classList.add("show");
+      }, 10);
+      document.body.classList.add("no-scroll");
+    });
+  });
+
+  // Close popup
+  function closePopupHandler() {
+    popup.querySelector(".popup").classList.remove("show");
+    // ✅ Wait for animation to complete before hiding
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 300);
+    document.body.classList.remove("no-scroll");
+  }
+
+  closeBtn.addEventListener('click', closePopupHandler);
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) closePopupHandler();
+  });
+
+  // Quantity controls
+  plusBtn?.addEventListener('click', () => {
+    quantityInput.value = (parseInt(quantityInput.value) || 1) + 1;
+    updatePrice();
+  });
+  minusBtn?.addEventListener('click', () => {
+    const v = Math.max(1, (parseInt(quantityInput.value) || 1) - 1);
+    quantityInput.value = v;
+    updatePrice();
+  });
+
+  quantityInput.addEventListener('input', () => {
+    if ((parseInt(quantityInput.value) || 0) < 1) quantityInput.value = 1;
+    updatePrice();
+  });
+
+  weightSelect.addEventListener('change', updatePrice);
+
+  // Add to cart - FIXED VERSION
+  addToCartBtn.addEventListener('click', () => {
+    try {
+      const quantity = Math.max(1, parseInt(quantityInput.value) || 1);
+      const weight = weightSelect.value;
+      const productImg = popupImg.getAttribute('src') || '';
+      const productName = currentProduct;
+      const rawPrice = priceEl.textContent.replace(/[^\d]/g, '') || '0';
+      const rawCut = cutPriceEl.textContent.replace(/[^\d]/g, '') || '0';
+      const price = parseInt(rawPrice) || 0;
+      const cutPrice = parseInt(rawCut) || 0;
+
+      const cartItem = {
+        name: productName,
+        image: productImg,
+        size: weight,
+        quantity: quantity,
+        price: price,
+        cutPrice: cutPrice
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      cartModalMessage.textContent = `"${productName}" has been added to your cart!`;
+      
+      // ✅ FIX: Properly close popup first
+      closePopupHandler();
+      
+      // ✅ FIX: Small delay for smooth transition
+      setTimeout(() => {
+        cartModal.style.display = 'flex';
+        document.body.classList.add("no-scroll");
+      }, 350);
+      
+    } catch (err) {
+      console.error('Add to cart error', err);
+      alert('Something went wrong while adding to cart.');
+    }
+  });
+
+  // Cart modal handlers - FIXED VERSION
+  function closeCartModalHandler() {
+    cartModal.style.display = 'none';
+    document.body.classList.remove("no-scroll");
+  }
+
+  closeCartModalBtn?.addEventListener('click', closeCartModalHandler);
+  continueShoppingBtn?.addEventListener('click', closeCartModalHandler);
+  viewCartBtn?.addEventListener('click', () => window.location.href = 'cart.html');
+  
+  window.addEventListener('click', e => {
+    if (e.target === cartModal) closeCartModalHandler();
+  });
+});
+</script>
+
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+  <script src="./js/footer.js" defer></script>
+  <script src="./js/header.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./js/nav.js"></script>
+</body>
+</html>

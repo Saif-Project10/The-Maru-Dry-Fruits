@@ -1,0 +1,341 @@
+/* header.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+/* Header with Background Image */
+.luxury-header.with-bg-image {
+  position: relative;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+/* Background Image - CHANGE YEH PART */
+.header-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+background-image: url(../images/imagescopy.JPG);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1; /* CHANGE YEH LINE - 1 karein */
+  filter: brightness(0.7);
+}
+
+/* Overlay - CHANGE YEH PART */
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 11, 11, 0.8) 0%,
+    rgba(11, 11, 11, 0.5) 50%,
+    rgba(11, 11, 11, 0.8) 100%
+  );
+  z-index: 2; /* CHANGE YEH LINE - 2 karein */
+}
+
+/* Header Content - CHANGE YEH PART */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 3; /* CHANGE YEH LINE - 3 karein */
+}
+
+/* Baaki sab code waisa hi rahega */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.header-logo svg {
+  width: 50px;
+  height: 50px;
+  animation: rotate 8s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.header-logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ffec9e, #e2b44c, #c28b2a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.header-logo-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.9), transparent);
+  animation: shine 3s linear infinite;
+}
+
+.header-logo-sub {
+  display: block;
+  font-size: 11px;
+  color: #ffda77;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: -2px;
+  font-family: 'Cinzel Decorative', serif;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+.header-toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 215, 0, 0.9);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffd700;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-toggle-btn:hover {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 20px #ffd700;
+  transform: scale(1.1);
+}
+
+/* Light Mode Styles */
+.light-mode .header-bg-image {
+  filter: brightness(0.9);
+}
+
+.light-mode .header-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(250, 246, 232, 0.7) 0%,
+    rgba(250, 246, 232, 0.4) 50%,
+    rgba(250, 246, 232, 0.7) 100%
+  );
+}
+
+.light-mode .header-logo-text {
+  background: linear-gradient(45deg, #c28b2a, #a87400, #8b5a00);
+  text-shadow: 0 0 15px rgba(194, 139, 42, 0.8);
+}
+
+.light-mode .header-logo-sub {
+  color: #a87400;
+  text-shadow: 0 0 8px rgba(194, 139, 42, 0.7);
+}
+
+.light-mode .header-toggle-btn {
+  background: rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(194, 139, 42, 0.9);
+  color: #c28b2a;
+}
+
+.light-mode .header-toggle-btn:hover {
+  background: #c28b2a;
+  color: #fff;
+  box-shadow: 0 0 20px #c28b2a;
+}
+
+/* Animations */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .luxury-header.with-bg-image {
+    height: 100px;
+    padding: 0 20px;
+  }
+  
+  .header-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-logo-text {
+    font-size: 24px;
+  }
+  
+  .header-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-bg-image {
+    background-position: center 30%;
+  }
+}
+/* ==================================
+   COMPLETE RESPONSIVE MEDIA QUERIES
+   ================================== */
+
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .luxury-header.with-bg-image {
+    height: 110px;
+    padding: 0 30px;
+  }
+  
+  .header-logo-text {
+    font-size: 26px;
+  }
+  
+  .header-toggle-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Mobile Devices (480px - 768px) - Already exists but adding for completeness */
+@media (max-width: 768px) {
+  .luxury-header.with-bg-image {
+    height: 100px;
+    padding: 0 20px;
+  }
+  
+  .header-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-logo-text {
+    font-size: 24px;
+  }
+  
+  .header-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-bg-image {
+    background-position: center 30%;
+  }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .luxury-header.with-bg-image {
+    height: 90px;
+    padding: 0 15px;
+  }
+  
+  .header-logo {
+    gap: 10px;
+  }
+  
+  .header-logo svg {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .header-logo-text {
+    font-size: 20px;
+  }
+  
+  .header-logo-sub {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  
+  .header-toggle-btn {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .header-bg-image {
+    background-position: center 40%;
+  }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+  .luxury-header.with-bg-image {
+    height: 80px;
+    padding: 0 10px;
+  }
+  
+  .header-logo-text {
+    font-size: 18px;
+  }
+  
+  .header-logo-sub {
+    font-size: 8px;
+  }
+  
+  .header-logo svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .header-toggle-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Very Small Devices (320px and below) */
+@media (max-width: 320px) {
+  .luxury-header.with-bg-image {
+    height: 75px;
+    padding: 0 8px;
+  }
+  
+  .header-logo-text {
+    font-size: 16px;
+  }
+  
+  .header-logo-sub {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+  
+  .header-logo {
+    gap: 8px;
+  }
+  
+  .header-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .header-toggle-btn {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maru Dry Fruits | Cart</title>
+<link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/nav.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+<!--favicon  -->
+<link rel="icon" type="image/x-icon" href="./images/ChatGPT Image Oct 25, 2025, 11_03_51 AM (1).png">
+
+</head>
+<body class="cart-page">
+
+<!-- Navbar -->
+<div id="navbar-placeholder"></div>
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+<script src="./js/particle.js" defer></script>
+
+<button id="goBackBtn">Go Back</button>
+
+<!-- Cart Section -->
+<section class="cart-section">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="cart-summary">
+        <h3>Total: <span id="cartTotal">Rs. 0</span></h3>
+        <button id="checkoutBtn">Checkout</button>
+    </div>
+</section>
+
+<!-- Checkout Form -->
+<section class="checkout-section" id="checkoutSection" style="display:none;">
+    <h2>Checkout</h2>
+    <form id="checkoutForm">
+        <label>Name:</label>
+        <input type="text" id="customerName" placeholder="Enter your full name">
+        <label>Address:</label>
+        <textarea id="customerAddress" placeholder="Enter your complete delivery address"></textarea>
+        <label>Phone:</label>
+        <input type="tel" id="customerPhone" placeholder="Enter your 10-digit phone number">
+        <button type="submit">Place Order</button>
+    </form>
+</section>
+
+<!-- Order Confirmation -->
+<section class="order-confirmation" id="orderConfirmation" style="display:none;">
+    <h2>Order Placed Successfully!</h2>
+    <p>Thank you for your purchase. Your order has been confirmed and will be delivered soon.</p>
+    <a href="index.html">Back to Shop</a>
+</section>
+
+<!-- Custom Modal -->
+<div id="customModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-icon">
+            <div class="success-icon">✓</div>
+            <div class="error-icon">✕</div>
+            <div class="warning-icon">⚠</div>
+        </div>
+        <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+        <p class="modal-message" id="modalMessage">Modal message will appear here.</p>
+        <button class="modal-ok-btn" id="modalOkBtn">OK</button>
+    </div>
+</div>
+
+<script src="./js/cart.js" defer></script>
+</body>
+</html>
