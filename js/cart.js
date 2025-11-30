@@ -168,9 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Validate phone number format
-        const phoneRegex = /^[0-9]{10,11}$/;
+        const phoneRegex = /^[0-9]{11}$/;
         if (!phoneRegex.test(phone)) {
-            showModal('error', 'Invalid Phone Number', 'Please enter a valid 10-11 digit phone number.');
+            showModal('error', 'Invalid Phone Number', 'Please enter a valid 11 digit phone number.');
             document.getElementById('customerPhone').focus();
             return;
         }
